@@ -35,7 +35,7 @@ const Main:React.FC = ()=>{
                         <p className="pet-surname">Corgi</p>
                     </div>
                     <div className="addr">
-                        {/* <img src="./locatiion-logo.png" alt="" className="logo" height='25px' width='25px'/> */}
+                        <img src="/location-logo.png" alt="" className="logo" height='25px' width='25px'/>
                         <p className="address">110 N 3th St, Brookllyn, NY, USA</p>
                     </div>
                 </div> 
@@ -54,7 +54,7 @@ const Main:React.FC = ()=>{
                 <div className="footer">
                     <div className="adopt">
                         <button className="adopt-btn">
-                        {/* <img src="./paw.png" alt="Paw Image" className="adopt-logo" height='25px' width='25px'/> */}
+                        <img src="/paw.png" alt="Paw Image" className="adopt-logo" height='25px' width='25px'/>
                         <p>Adopt</p>
                         </button>
                     </div>

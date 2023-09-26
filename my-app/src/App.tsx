@@ -24,7 +24,9 @@ const App: React.FC = ()=> {
     <>
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <div className="darkTheme">
-            <button onClick={toggleTheme} className="dark-mode-toggle" id={theme}></button>
+            <button onClick={toggleTheme} className="dark-mode-toggle" id={theme}>
+      
+            </button>
         </div>
         <div className="App" id={theme}>
           <ProfilePic/>

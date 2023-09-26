@@ -2,42 +2,39 @@
 import React from "react";
 import './ProfilePic.css'
 import { useState, useEffect } from "react";
+import axios from 'axios'
 
-const ProfilePic = ()=>{
+const name:string = 'Siamese';
+const apiURL:string = `https://api.api-ninjas.com/v1/cats?name=${name}`
+const apiKey:string = 'ssD5r3FiaUPjT+DF0fXGSA==7xUMInvFtnKCQkLc';
+
+const ProfilePic: React.FC = ()=>{
 
     const[imageURL, setImageURL] = useState<string>(' ');
     const[loading, setLoading] = useState<boolean>(true);
 
+
     
     useEffect(()=>{
-        const name = 'Siamese';
-        const apiKey = 'ssD5r3FiaUPjT+DF0fXGSA==7xUMInvFtnKCQkLc';
-
-        fetch(`https://api.api-ninjas.com/v1/cats?name=${name}`, {
-        method: 'GET',
-        headers: {
-            'X-Api-Key': apiKey,
-        },
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            
-        if (Array.isArray(data) && data.length > 0) {
-            const catInfo = data[0];
-            const imageLink = catInfo.image_link;
-            setImageURL(imageLink)
-            console.log('Image Link:', imageLink);
-        } else {
-            console.error('Cat data not found or empty.');
-        }
-
-        setLoading(false);
-            })
-        .catch((error) => {
-            console.error('Error fetching cat data:', error);
+        async function getImageURL(){
+            const response= await axios.get(apiURL,{
+                method: 'GET',
+                headers: {
+                    'X-Api-Key': apiKey,
+                },
+            });
+            if (Array.isArray(response.data) && response.data.length > 0) {
+                const catInfo = response.data[0];
+                const imageLink = catInfo.image_link;
+                setImageURL(imageLink)
+                console.log('Image Link:', imageLink);
+            } else {
+                console.error('Cat data not found or empty.');
+            }
             setLoading(false);
-        });
-    }, [])
+            }
+            getImageURL();
+        }, [])
 
     return(
         <>
