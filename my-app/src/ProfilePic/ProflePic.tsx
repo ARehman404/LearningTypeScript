@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const name:string = 'Siamese';
 const apiURL:string = `https://api.api-ninjas.com/v1/cats?name=${name}`
-const apiKey:string = 'ssD5r3FiaUPjT+DF0fXGSA==7xUMInvFtnKCQkLc';
+const apiKey: string = process.env.REACT_APP_API_KEY || '';
 
 const ProfilePic: React.FC = ()=>{
 
@@ -18,7 +18,6 @@ const ProfilePic: React.FC = ()=>{
     useEffect(()=>{
         async function getImageURL(){
             const response= await axios.get(apiURL,{
-                method: 'GET',
                 headers: {
                     'X-Api-Key': apiKey,
                 },
